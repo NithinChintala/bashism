@@ -45,6 +45,7 @@ function Format-BashPrompt {
         [String] $Format
     )
     $sb = [System.Text.StringBuilder]::new()
+    $dt = Get-Date
     
     for ($i = 0; $i -lt $Format.Length; $i++) {
         if ($Format[$i] -eq "\") {
@@ -61,10 +62,10 @@ function Format-BashPrompt {
                 "H" { $sb.Append($env:COMPUTERNAME) > $null; break }
                 "n" { $sb.Append("`n") > $null; break }
                 "r" { $sb.Append("`r") > $null; break }
-                "t" { $sb.Append($(Get-Date -UFormat "%T")) > $null; break }
-                "T" { $sb.Append($(Get-Date -UFormat "%I:%M:%S")) > $null; break }
-                "@" { $sb.Append($(Get-Date -UFormat "%r")) > $null; break }
-                "A" { $sb.Append($(Get-Date -UFormat "%R")) > $null; break }
+                "t" { $sb.Append($(Get-Date -Date $dt -UFormat "%T")) > $null; break }
+                "T" { $sb.Append($(Get-Date -Date $dt -UFormat "%I:%M:%S")) > $null; break }
+                "@" { $sb.Append($(Get-Date -Date $dt -UFormat "%r")) > $null; break }
+                "A" { $sb.Append($(Get-Date -Date $dt -UFormat "%R")) > $null; break }
                 "u" { $sb.Append($env:USERNAME) > $null; break }
                 "v" {
                     $maj = $Host.Version.Major
