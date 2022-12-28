@@ -4,3 +4,4 @@ do on Bash in PowerShell
 
 ## Current Scripts
 - Similar $PS1 behavior for prompt
+- Tab complete `ssh` / `scp` / `sftp` with host names in `~/.ssh/config`
